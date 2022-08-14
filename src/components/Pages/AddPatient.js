@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { createPatient } from "../../slices/patients";
 import Card from "../../UI/Card";
 import loading from "../../UI/loading.svg";
-import { Link } from "react-router-dom";
 
 const AddPatient = () => {
   const initialPatientState = {

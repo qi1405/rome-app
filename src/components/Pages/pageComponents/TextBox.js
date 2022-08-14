@@ -3,7 +3,7 @@ import { TextField } from "@material-ui/core";
 export default function TextBox() {
   return (
     <section>
-      <div>Report</div>
+      <div><h1>REPORT</h1></div>
       <div>
         <form noValidate autoComplete="off" style={{ margin: "1rem" }}>
           <TextField

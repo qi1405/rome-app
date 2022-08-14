@@ -1,0 +1,17 @@
+a {
+    color: #61DAFB;
+    font-family: helvetica;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  a:active {
+    color: black;
+  }
+  
+  a:visited {
+    color: #005555;
+  }

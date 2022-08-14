@@ -1,4 +1,5 @@
 import loading from "../../UI/loading.svg";
+import LinkStyle from "./pageComponents/LinkStyle.module.css";
 
 function Home() {
   return (
@@ -12,15 +13,19 @@ function Home() {
             <img src={loading} className="loading" alt="logo" />
           </div>
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            This site is under development and changes will occur eventually.
+          </p>
+          <p>
+            You can check the finished demo site below.
           </p>
           <a
-            className="App-link"
-            href="https://reactjs.org"
+            className={LinkStyle}
+            style={{textTransform: "uppercase"}}
+            href="https://jpsols.xyz"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Learn React
+            Demo app
           </a>
         </div>
       </div>

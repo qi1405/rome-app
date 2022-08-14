@@ -17,9 +17,15 @@ function Patients() {
             <img src={loading} className="loading" alt="logo" />
           </div>
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            Below you can check the form for adding a patient manually.
           </p>
-          <Link to="/patients/12">Go to patient with id 12</Link>
+          <p>
+            Also, you can check a specific patient by using params.
+          </p>
+          <Link to="/patients/add">Add a patient manually</Link>
+          <div>
+          <Link to="/patients/12">Visit patient with ID 12</Link>
+          </div>
           </div>
         </Card>
       </div>

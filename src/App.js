@@ -6,6 +6,7 @@ import { Suspense } from "react";
 import Patients from "./components/Pages/Patients";
 import Patient from "./components/Pages/Patient";
 import { ThemeProvider, createTheme } from "@material-ui/core";
+import AddPatient from "./components/Pages/AddPatient";
 
 const Theme = createTheme({
   palette: {
@@ -54,6 +55,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/patients" element={<Patients />} />
             <Route path="/patients/:id" element={<Patient />} />
+            <Route path="/patients/add" element={<AddPatient />} />
           </Routes>
         </Suspense>
       </Layout>

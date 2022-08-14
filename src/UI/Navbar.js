@@ -22,7 +22,7 @@ function Navbar() {
             style={({ isActive }) =>
               isActive
                 ? {
-                    color: "#e6fcfc",
+                    color: "#61DAFB",
                   }
                 : { color: "" }
             }

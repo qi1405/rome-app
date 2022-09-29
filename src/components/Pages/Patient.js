@@ -1,45 +1,94 @@
 import { useParams } from "react-router-dom";
 import Card from "../../UI/Card";
-import loading from "../../UI/loading.svg";
-import PatientsHeadRow from "./pageComponents/Patients_headRow";
-import TextBox from "./pageComponents/TextBox";
+import React, { useState, useEffect, useCallback } from "react";
+import { PatientHeadRow } from "./pageComponents/Patient_list";
+import PatientService from "../../services/PatientService";
+import { useDispatch, useSelector } from "react-redux";
+import { createStudy, getStudyByPatientId, retrieveStudies } from "../../slices/studies";
+import StudyReports from "./pageComponents/StudyReports";
 
 function Patient() {
-  const { id } = useParams();
-  console.log(id);
+  const { patientID } = useParams();
+  const studies = useSelector(state => state.studies);
+  const dispatch = useDispatch();
+  const initialPatientState = {
+    patientID: null,
+    patientsName: "",
+    patientsBirthDate: new Date(),
+    ethnicGroup: "",
+    patientsSex: "",
+  };
+
+  const [currentPatient, setCurrentPatient] = useState(initialPatientState);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [currentStudies, setCurrentStudies] = useState([]);
+
+  const getPatient = (patientID) => {
+    PatientService.getPatientById(patientID)
+      .then((response) => {
+        setCurrentPatient(response.data);
+      })
+      .catch((e) => {
+        console.log(e);
+        setErrorMessage(e.message);
+      });
+  };
+
+  const getStudies = () => {
+    dispatch(getStudyByPatientId({patientID: patientID}));
+  }
+
+  const initFetch = useCallback(() => {
+    dispatch(retrieveStudies());
+  }, [dispatch]);
+
+  useEffect(() => {
+    getPatient(patientID);
+    initFetch();
+  }, [patientID, initFetch]);
+
+  const studyList = studies.map((study) => {
+    <StudyReports
+    key={study.studyID}
+    studyID={study.studyID}
+    studyDescription={study.studyDescription}
+    studyDate={study.studyDate}
+    />
+  });
+
+  console.log(studies)
+
+  const PatientList = () => {
+    if (currentPatient.patientID !== null) {
+      return (
+        <section className="headrow">
+          <div className="item">{currentPatient.patientID}</div>
+          <div className="item">{currentPatient.patientsName}</div>
+          <div className="item">{currentPatient.patientsBirthDate}</div>
+          <div className="item">{currentPatient.ethnicGroup}</div>
+          <div className="item">{currentPatient.patientsSex}</div>
+        </section>
+      );
+    } else {
+      return (
+        <section className="headrow">
+          <div className="item">{errorMessage}</div>
+        </section>
+      );
+    }
+  };
+
   return (
     <div className="App">
       <header className="header">
-        <p>This is the page for patient with id: {id}!</p>
+        <p>This is the page for patient with id: {patientID}!</p>
       </header>
       <div className="container">
         <Card>
-          <PatientsHeadRow />
-          <div>
-            <div>
-              <img src={loading} className="loading" alt="logo" />
-            </div>
-            <TextBox />
-          </div>
-          <div
-            style={{
-              display: "flex",
-              textAlign: "center",
-              alignContent: "center",
-              justifyContent: "center",
-              marginBottom: "0.6rem"
-            }}
-          >
-            <div>
-              <button className="button">Edit</button>
-            </div>
-            <div>
-              <button className="button">Save</button>
-            </div>
-          </div>
-          <div>
-            <button className="button" style={{width: "9rem", height: "4rem", marginBottom: "0.6rem"}}>Generate report</button>
-          </div>
+          <PatientHeadRow />
+          <PatientList />
+          <p style={{ borderBottom: "2px solid #005555" }}>STUDY REPORTS</p>
+          <StudyReports />
         </Card>
       </div>
     </div>

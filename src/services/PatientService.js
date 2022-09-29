@@ -2,22 +2,22 @@ import http from "../http-common";
 const getAllPatients = () => {
   return http.get("/patients");
 };
-const getPatientById = id => {
-  return http.get(`/patients/${id}`);
+const getPatientById = patientID => {
+  return http.get(`/patients/${patientID}`);
 };
 const createPatient = data => {
   return http.post("/patients", data);
 };
-const updatePatient = (id, data) => {
-  return http.put(`/patients/${id}`, data);
+const updatePatient = (patientID, data) => {
+  return http.put(`/patients/${patientID}`, data);
 };
-const removePatient = id => {
-  return http.delete(`/patients/${id}`);
+const removePatient = patientID => {
+  return http.delete(`/patients/${patientID}`);
 };
 const findByName = patientsName => {
   return http.get(`/patients?patientsName=${patientsName}`);
 };
-const PatientService = {
+const PatientDataService = {
     getAllPatients,
     getPatientById,
     createPatient,
@@ -25,4 +25,4 @@ const PatientService = {
     removePatient,
     findByName
 };
-export default PatientService;
+export default PatientDataService;

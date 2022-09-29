@@ -51,11 +51,62 @@
   border-bottom: 2px solid #005555;
 }
 
-.headrow-item{
+.headrow .item{
   width: 10rem;
   border-left: 1px solid #005555;
   border-right: 1px solid #005555;
 }
+
+.block{
+  display: flex;
+  justify-content: space-between;
+}
+
+.block .left{
+  background-color: #005555;
+  border: 3px solid #61DAFB;
+  border-radius: 14px;
+  flex: 35%;
+}
+
+.block .left .title {
+  border-bottom: 1px solid #61DAFB;
+}
+
+.block .left .item {
+  display: flex;
+}
+
+.block .left .left-column {
+  flex: 50%;
+}
+
+.block .left .right-column {
+flex: 50%;
+}
+
+.block .center{
+  flex: 30%;
+}
+
+.block .right{
+  background-color: #005555;
+  border: 3px solid #61DAFB;
+  border-radius: 14px;
+  flex: 35%;
+}
+
+.block .right .title {
+  border-bottom: 1px solid #61DAFB;
+}
+
+.block .right .item {
+  display: flex;
+}
+
+.block .right .column {
+  flex: 90%;
+  }
 
 .button {
   cursor: pointer;

@@ -29,6 +29,18 @@ function Navbar() {
           >
             Patients
           </NavLink>
+          <NavLink
+            to="/add"
+            style={({ isActive }) =>
+              isActive
+                ? {
+                    color: "#61DAFB",
+                  }
+                : { color: "" }
+            }
+          >
+            Add
+          </NavLink>
         </div>
         <button onClick={() => setShowLinks(!showLinks)}>
           {" "}

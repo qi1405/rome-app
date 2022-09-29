@@ -54,8 +54,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/patients" element={<Patients />} />
-            <Route path="/patients/:id" element={<Patient />} />
-            <Route path="/patients/add" element={<AddPatient />} />
+            <Route path="/patients/:patientID" element={<Patient />} />
+            <Route path="/add" element={<AddPatient />} />
           </Routes>
         </Suspense>
       </Layout>
